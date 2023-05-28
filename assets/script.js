@@ -12,6 +12,7 @@ searchBtn.addEventListener("click", function(event){
   var element = document.getElementById("query");
   element.value="";
   fetchCurrentWeather(city);
+  fetchAPI(city);
   }
 )};
 
@@ -61,3 +62,46 @@ function getIcon(icon){
   imgEl.setAttribute('alt', "weather icon");
   imgEl.setAttribute('src', iconURL);
 };
+async function fetchAPI(city){
+  var api = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=1403f67aa3a08844258fc3b9dff6ff41&units=imperial";
+  var response = await fetch(api);
+  var data = await response.json();
+  let dayCounter = 2;
+  for (let i = 0; i < data.list.length; i=i+8) {
+    var h3El = document.getElementById("Day"+dayCounter)
+    h3El.textContent = (moment(data.list[i].dt,"X").format("MM/DD/YYYY"))
+    get5DayIcon(data, i, dayCounter);
+    get5DayTemp(data, i, dayCounter);
+    get5DayWind(data, i, dayCounter);
+    get5DayHumidity(data, i, dayCounter);
+    dayCounter++
+  };
+};
+
+
+function get5DayTemp(data, i, dayCounter){
+  let tempEl = document.getElementById("temp"+dayCounter);
+  tempEl.textContent = `Temp: ${data.list[i].main.temp}°F`;
+};
+
+
+function get5DayWind(data, i, dayCounter){
+  let windEl = document.getElementById("wind"+dayCounter);
+  windEl.textContent = `Wind: ${data.list[i].wind.speed} MPH`;
+};
+
+
+function get5DayHumidity(data, i, dayCounter){
+  let humidityEl = document.getElementById("humid"+dayCounter);
+  humidityEl.textContent = `Humidity ${data.list[i].main.humidity}%`;
+};
+
+
+function get5DayIcon(data, i, dayCounter){
+  let icon = data.list[i].weather[0].icon;
+  iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
+  let imgEl = document.getElementById("icon"+dayCounter);
+  imgEl.setAttribute('alt', "weather icon");
+  imgEl.setAttribute('src', iconURL);
+};
+
