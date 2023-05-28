@@ -25,10 +25,10 @@
 - THEN I am again presented with current and future conditions for that city
 
 ## What was the goal of this project?
-- The goal of this project was to create a weather dashboard app that shows you today's weather plus the next 5 days for any city you input.
+- The goal of this project was to create a weather dashboard app that shows you today's weather plus the next 5 days for any city you input. This was achived by making mutiple api calls to https://openweathermap.org/forecast5 and then taking that info and getting it to display on the page. All your recent searches are also saved to local storage and will stay there even on page refresh plus you can click on them aswell.
 
 ## Link to deployed application
-- 
+- https://linkinhuber.github.io/weather-search/
 
 ## Screenshot of webpage
 ![Screenshot of home page](./assets/images/Screenshot%202023-05-28%20164753.png)
