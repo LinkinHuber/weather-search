@@ -3,7 +3,9 @@ var searchBtn = document.querySelector(".btn");
 var listOfCities = document.querySelector(".recent");
 var searchHistory = [];
 
-
+if (localStorage.getItem("location")){
+  searchHistory = JSON.parse(localStorage.getItem("location"))
+};
 clickEvent();
 function clickEvent(){
 searchBtn.addEventListener("click", function(event){
@@ -24,6 +26,7 @@ async function fetchCurrentWeather(city){
   if (searchHistory.includes(data.name)=== false){
     searchHistory.push(data.name)
     localStorage.setItem("location", JSON.stringify(searchHistory))
+    loadSearchHistory();
   }
   date = (moment(data.dt,"X").format("MM/DD/YYYY"));
   let cityTitle = document.getElementById("city");
@@ -105,3 +108,25 @@ function get5DayIcon(data, i, dayCounter){
   imgEl.setAttribute('src', iconURL);
 };
 
+loadSearchHistory();
+function loadSearchHistory(){
+  if (searchHistory.length > 0){
+    var city = searchHistory[searchHistory.length-1]
+    fetchTodayWeather(city);
+    fetchAPI(city);
+  };
+  listOfCities.textContent = ""
+  for (let i = 0; i < searchHistory.length; i++) {
+    var li = document.createElement("li")
+    var button = document.createElement("button")
+    button.style = "width: 175px" 
+    button.textContent = searchHistory[i]
+    li.appendChild(button)
+    listOfCities.appendChild(li)
+    button.addEventListener("click", function(){
+      var city = this.textContent
+      fetchTodayWeather(city);
+      fetchAPI(city);
+    });
+  };
+};
