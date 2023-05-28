@@ -1,12 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="./assets/style.css">
+  <title>Weather Dashboard</title>
 </head>
+
 <body>
-  
+
+  <header class="header">
+    <h1>Weather Dashboard</h1>
+  </header>
+
+  <aside class="aside">
+    <h2>City Search</h2>
+    <form>
+      <input type="search" class="search" name="" placeholder="city">
+      <button id="query" class="btn" type="submit">Search</button>
+    </form>
+    <ul class="recent">
+      <li></li>
+    </ul>
+  </aside>
+
+    <main>
+      <section class="card">
+        <h2 id="city"></h2>
+        <h3 id="Day1"></h3>
+      <div>
+        <img id="icon1"></img>
+      </div>
+        <ul class="stats">
+          <li id="temp1"></li>
+          <li id="wind1"></li>
+          <li id="humidity1"></li>
+        </ul>
+      </section>
+  <!-- </div> -->
+    <section class="card">
+      <h3 id="Day2"></h3>
+      <div>
+        <img id="icon2"></img>
+      </div>
+      <ul class="stats">
+        <li id="temp2"></li>
+        <li id="wind2"></li>
+        <li id="humidity2"></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h3 id="Day3"></h3>
+      <div>
+        <img id="icon3"></img>
+      </div>
+      <ul class="stats">
+        <li id="temp3"></li>
+        <li id="wind3"></li>
+        <li id="humidity3"></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h3 id="Day4"></h3>
+      <div>
+        <img id="icon4"></img>
+      </div>
+      <ul class="stats">
+        <li id="temp4"></li>
+        <li id="wind4"></li>
+        <li id="humidity4"></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h3 id="Day5"></h3>
+      <div>
+        <img id="icon5"></img>
+      </div>
+      <ul class="stats">
+        <li id="temp5"></li>
+        <li id="wind5"></li>
+        <li id="humidity5"></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h3 id="Day6"></h3>
+      <div>
+        <img id="icon6"></img>
+      </div>
+      <ul class="stats">
+        <li id="temp6"></li>
+        <li id="wind6"></li>
+        <li id="humidity6"></li>
+      </ul>
+      </section>
+      </div>
+      </div>
+      </div>
+      </main>
+
+
+
+  <script type="text/javascript" src="./assets/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 </body>
+
 </html>
